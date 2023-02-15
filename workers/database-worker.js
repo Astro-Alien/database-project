@@ -1,0 +1,4 @@
+class DatabaseWorker{
+    constructor() {
+    }
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Note Me</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    html, body {
+        overflow: hidden;
+        font-family: 'SourceSansPro', sans-serif;
+        height: 100%; /* add height: 100% to make sure the body takes up the entire viewport */
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    header, footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 3rem;
+        background: grey;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+    }
+</style>
+
+<body>
+    <header>Note Me</header>
+    <main>
+        <note-list></note-list>
+        <edit-form></edit-form>
+    </main>
+    <footer>@charleslemmert</footer>
+<script type="module">
+    import "./index.js";
+    import "./components/note-list/note-list.js";
+    import "./components/edit-form/edit-form.js";
+</script>
+</body>
+</html>
