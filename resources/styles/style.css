@@ -1,3 +1,5 @@
 html,body{
-    background: grey;
+    overflow: hidden;
+    font-family: 'SourceSansPro', sans-serif;
+    height: 100%;
 }
