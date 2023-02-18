@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Note Me</title>
 </head>
@@ -14,7 +15,6 @@
     }
 
     html, body {
-        overflow: hidden;
         font-family: 'SourceSansPro', sans-serif;
         height: 100%;
     }
@@ -31,7 +31,7 @@
     }
 
     header, footer {
-        display: flex;
+        display: inherit;
         justify-content: center;
         align-items: center;
         width: 100%;
@@ -49,13 +49,14 @@
     <header>Note Me</header>
     <main>
         <note-list></note-list>
-        <edit-form></edit-form>
+        <note-form></note-form>
     </main>
-    <footer>@charles lemmert</footer>
-<script type="module">
-    import "./index.js";
-    import "./components/note-list/note-list.js";
-    import "./components/edit-form/edit-form.js";
-</script>
+    <footer>@charleslemmert</footer>
+
+    <script type="module">
+        import "./components/note-list/note-list.js";
+        import "./components/note-form/note-form.js";
+        import "./index.js";
+    </script>
 </body>
 </html>

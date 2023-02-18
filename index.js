@@ -1,6 +1,11 @@
 class ViewModel {
-    constructor() {
-        console.log("hello world")
+    async connectedCallback() {
+
+    }
+
+    async disconnectedCallback() {
+
     }
 }
+
 globalThis.viewModel = new ViewModel();

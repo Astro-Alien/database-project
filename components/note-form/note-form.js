@@ -1,4 +1,4 @@
-class NoteList extends HTMLElement {
+class NoteForm extends HTMLElement {
 
     constructor() {
         super();
@@ -23,4 +23,5 @@ class NoteList extends HTMLElement {
 
     }
 }
-customElements.define("note-list", NoteList);
+
+customElements.define("note-form", NoteForm);
