@@ -1,10 +1,12 @@
 class ViewModel {
-   async connectedCallback() {
 
+   async connectedCallback() {
+       const worker = new Worker("./src/database/database-worker.js");
+
+       globalThis.dbWorker = worker;
    }
 
     async disconnectedCallback() {
-
     }
 
 }

@@ -1,4 +1,4 @@
-importScripts("./../src/database/database.js");
+importScripts("./database.js");
 /**
  * @class DatabaseWorker - Worker for database wrapper class
  *
