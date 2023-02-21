@@ -11,6 +11,15 @@ importScripts("./database.js");
 
  */
 class DatabaseWorker{
+    constructor() {
+        const db = new Database();
+        return new Promise(resolve => {
+            db.connectToDB().then(database => {
+                globalThis.database = database;
+                resolve();
+            });
+        });
+    }
     /**
      * @method #create - It creates a record
      * @param record - The record to be created.
@@ -104,17 +113,6 @@ self.onmessage = async (event) => {
     const {action, data} = event.data;
 
     if (dbWorker[`${action}Posting`]) {
-        await initDB();
         await dbWorker[`${action}Posting`](data);
     }
-}
-
-async function initDB() {
-    const db = new Database();
-    return new Promise(resolve => {
-        db.connectToDB().then(database => {
-            globalThis.database = database;
-            resolve();
-        })
-    })
 }
