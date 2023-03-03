@@ -29,14 +29,19 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
-
+    note-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     header, footer {
         display: inherit;
         justify-content: center;
         align-items: center;
         width: 100%;
         height: 3rem;
-        background: grey;
+        background: #000000;
+        color: #ffffff;
     }
 
     footer {
@@ -51,7 +56,7 @@
         <note-list></note-list>
         <note-form></note-form>
     </main>
-    <footer>@charleslemmert</footer>
+    <footer>&copy;charleslemmert</footer>
 
     <script type="module">
         import "./components/note-list/note-list.js";
