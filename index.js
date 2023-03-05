@@ -27,6 +27,7 @@ class ViewModel {
     async #actionType(event) {
         const data = event.detail;
         dbWorker.postMessage(data);
+        event.stopPropagation();
     }
 }
 
