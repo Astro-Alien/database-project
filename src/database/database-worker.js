@@ -2,8 +2,7 @@ importScripts("./database.js");
 /**
  * @class DatabaseWorker - Worker for database wrapper class
  *
- * feature: class database is a wrapper class for IndexedDB
- *
+ * feature:
  * @method #create {object} - creates a record in the store by calling the globalThis.database.create method
  * @method #read {string/integer}- reads a record from the store by calling the globalThis.database.read method
  * @method #update {object}- updates a record in the store by calling the globalThis.database.update method
@@ -11,15 +10,6 @@ importScripts("./database.js");
 
  */
 class DatabaseWorker{
-    constructor() {
-        const db = new Database();
-        return new Promise(resolve => {
-            db.connectToDB().then(database => {
-                globalThis.database = database;
-                resolve();
-            });
-        });
-    }
     /**
      * @method #create - It creates a record
      * @param record - The record to be created.
@@ -108,11 +98,23 @@ class DatabaseWorker{
         await this.#deleteRecord(data);
     }
 }
+
 self.onmessage = async (event) => {
     const dbWorker = new DatabaseWorker();
     const {action, data} = event.data;
 
     if (dbWorker[`${action}Posting`]) {
+        await initDB();
         await dbWorker[`${action}Posting`](data);
     }
+}
+
+async function initDB() {
+    const db = new Database();
+    return new Promise(resolve => {
+        db.connectToDB().then(database => {
+            globalThis.database = database;
+            resolve();
+        })
+    })
 }
