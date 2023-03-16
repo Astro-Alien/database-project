@@ -1,5 +1,6 @@
 class ViewModel {
     #actionHandler;
+    #dbWorker;
 
     async connectedCallback() {
         await this.load();
@@ -9,7 +10,7 @@ class ViewModel {
         return new Promise((resolve) => {
             requestAnimationFrame(() => {
                 const worker = new Worker("./src/database/database-worker.js");
-                globalThis.dbWorker = worker;
+                this.#dbWorker = worker;
                 //action type handler
                 this.#actionHandler = this.#actionType.bind(this);
                 document.addEventListener("dataTransfer", this.#actionHandler);
@@ -20,13 +21,14 @@ class ViewModel {
 
     async disconnectedCallback() {
         this.#actionHandler = null;
-        globalThis.dbWorker.terminate();
+        this.#dbWorker.terminate();
+        this.#dbWorker = null;
         document.removeEventListener("dataTransfer", this.#actionHandler);
     }
 
     async #actionType(event) {
         const data = event.detail;
-        dbWorker.postMessage(data);
+        this.#dbWorker.postMessage(data);
         event.stopPropagation();
     }
 }
